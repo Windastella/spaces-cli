@@ -16,7 +16,7 @@ const makeS3Path = (uploadPath, localPath, multiple) => {
 	if (isFile && multiple) throw new Error(`Invalid upload path for multiple files (path can't end with file extension)`)
 
 	// If uploadPath is a file, use it as fileKey, else combine it with localPath
-	const output = isFile ? uploadPath : path.join(uploadPath, localPath)
+	const output = isFile ? uploadPath : path.join(uploadPath, localPath).replace("\\","/")
 	return removeLeadingSlash(output)
 }
 
